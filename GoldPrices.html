@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>No Sidebar - Twenty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	</head>
+	<body class="no-sidebar is-preload">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Dirk Laschat <span style="margin-left: 0.5cm;">Research and Data Science Portfolio</span></a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="current"><a href="index.html">Landing Page</a></li>
+							<!-- <li class="submenu">
+								<a href="#">Layouts</a>
+								<ul>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li class="submenu">
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Dolore Sed</a></li>
+											<li><a href="#">Consequat</a></li>
+											<li><a href="#">Lorem Magna</a></li>
+											<li><a href="#">Sed Magna</a></li>
+											<li><a href="#">Ipsum Nisl</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button primary">Sign Up</a></li> -->
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<h2><strong>TREIBEN SPEKULANTEN DEN GOLDPREIS?
+						</strong></h2>
+						<p>In den letzten Jahrzehnten sind Rohstoffmärkte stark gewachsen. 
+							Dabei haben sich viele von ihnen von primär physischen Handelsplätzen zu typischen Finanzmärkten entwickelt. 
+							Dies bringt auch eine erhöhte Anzahl an Spekulanten mit sich, die versuchen ihre Rendi-ten mit neuen Investmentchancen zu erhöhen (Manera et al. 2013). 
+							Dabei ist Spekulation per se nicht als schlecht zu betrachten. 
+							Marktineffizienzen können z. B. durch Arbitragehändler erkannt und Preise wieder zurück zu ihren Fundamentalwerten gebracht werden (Keynes 1923).
+						</p>
+						<br>
+						<p>
+						Zwischen 2003 und 2008 stiegen jedoch die Preise von in Rohstoffindizes gelisteten Rohstoffen um mehr als 200 %. Im gleichen Zeitraum stiegen die Investments in eben diese Rohstoffindizes von 13 Milliarden auf 317 Milliarden US-Dollar. Für viele lag die Vermutung nahe, dass hier ein direkter Zusammenhang besteht und die Rohstoffindex-Spekulanten die Nachfrage und somit auch den Preis in die Höhe treiben und so keine effiziente Preisbildung zustande kommen kann. Einer der prominentesten Vertreter und auch Namensgeber für diese Hypothese ist dabei der Hedgefonds Manager Micheal Masters (Masters und White 2008).
+						Auch das Edelmetall Gold startete in diesem Zeitraum eine Rally. Da Gold bekannt für seine Hedge-Eigenschaften gegenüber verschiedenen Risiken ist, scheint die These, dass Spekulation einen Einfluss auf die Preisbildung dieses Rohstoffes hat, nicht sonderlich weit hergeholt. Deshalb soll in dieser Arbeit die oben beschriebene Situation für Gold untersucht werden. Dabei werden die Renditen von Goldfutures in einem GARCH-Modell auf die gesamte Spekulationsmasse bzw. die Long-Spekulationsmasse sowie Kontrollvariablen regressiert.
+					</p>
+
+					<p><strong><em>The following content will show excerpts of one of my seminar papers during my Master of Economics.</em></strong></p>
+
+					<p><strong><em><strong style="font-weight: 800;">To directly jump to the R-Code </strong>use the button below:</em></strong></p>
+					<ul class="buttons stacked">
+						<li><a href="Gold_Preise_Full_Code.html" class="button fit scrolly">To R-Code Example</a></li>
+					</ul>
+
+					</header>
+
+	
+							<!-- Content -->
+							<section class="wrapper style3 container special">
+								
+							<div class="content">
+
+														<!-- Three -->
+
+							<section class="wrapper style3 container special">
+
+
+							<h2><strong>Genutzte Daten</strong></h2>
+							<p>
+								Um den Zusammenhang zwischen Goldpreisen und Spekulation zu untersuchen werden Daten für die Schlusskurse von Goldfutures an der COMEX herangezogen. 
+								Für die Messung der Spekulation sollen zwei Maße in Betracht gezogen werden:
+
+								1. Der Anteil der gesamten Spekulation an den offenen Positionen: 
+								\[
+								TS = \dfrac{(NCL+NCS)}{(2*OI)}
+								\]
+								
+								2. Der Anteil der Long-Spekulation an den offenen Positionen:
+								\[
+								LS=\dfrac{NCL}{OI}
+								\]
+								Hierbei steht NCL für die Long-Positionen nicht-kommerzieller Händler, NCS für die Short-Positionen nicht-kommerzieller Händler und OI für die gesamten offenen Positionen am Markt. Die für diese Berechnung benötigten Daten werden ebenfalls von der COMEX herangezogen. Gerade das zweite Maß ist interessant für die Fragestellung, ob Spekulanten den Goldpreis treiben, da vor allem gebündelte Spekulation auf einen steigenden Preis im Verdacht stand den Preisboom verschiedener Rohstoffe mit ausgelöst zu haben.
+								Als Kontrollvariablen werden die folgenden, bereits im Literaturüberblick identifizierten, Variablen genutzt. Die im Folgenden verwendeten Abkürzungen sind dabei in Klammern dargestellt: Die WTI Rohölrenditen in Dollar per Barrel (WTI), die S&P 500 Composite Index-Renditen (S&P), die Renditen dreimonatiger US Treasury-Bills (TBILL) und die Renditen der nominalen effektiven US-Dollar-Wechselkurse gewichtet nach Handelsbeziehungen (EER). Alle Daten werden in wöchentlicher Frequenz genutzt. 
+								
+							<br>Die wöchentlichen Renditen aller finanziellen Zeitreihen werden mithilfe der Schlusskurse wie folgt berechnet:
+							\[
+							r_t=log⁡(P_t)-log⁡(P_{t-1})
+							\]
+							Die Daten umfassen einen Zeitraum von fast 20 Jahren von 01/2000 bis 03/2020 mit insgesamt 1.052 wöchentlichen Datenpunkten. Abbildung 1 zeigt die Preise der Goldfutures über den Beobachtungszeitraum. Man kann feststellen, dass zwischen 2006 und 2013 eine deutliche Rally stattfand. Nach 2013 beruhigte sich der Preis dann und schwankten auf einem höheren Niveau. Aus diesem Grund sollen neben der gesamten Stichprobe auch diese beiden Perioden als einzelne Teilmengen in zwei weiteren GARCH-Modellen untersucht werden.
+							</br>
+							</p>
+							
+							<br>
+							
+							<p>
+							Die folgende Abbildung zeigt die Preise der Goldfutures über den Beobachtungszeitraum. Man kann feststellen, 
+							dass zwischen 2006 und 2013 eine deutliche Rally stattfand. Nach 2013 beruhigte sich der Preis dann und schwankten auf einem höheren Niveau. 
+							Aus diesem Grund sollen neben der gesamten Stichprobe auch diese beiden Perioden als einzelne Teilmengen in zwei weiteren GARCH-Modellen untersucht werden.
+							</p>
+
+							<p style = "margin:0;">Entwicklung der Goldpreise über die Dauer der Stichprobe:</p>
+							<a{text-decoration:none;}><img src="images/Gold Prices/EntwicklungGoldpreise.svg" height="auto" width="60%"/></a>
+
+							<h2><strong>Test der Daten auf Angemessenheit</strong></h2>
+							
+							<p>
+							Der untersuchte Zusammenhang enthält mit den Goldpreisen eine finanzielle Zeitreihe.
+							Hierbei ist es höchstwahrscheinlich, dass Heteroskedastizität in der Varianz vorliegt.
+							Diese Vermutung kann auch durch die in der folgenden Abbildung dargestellten Volatilität der Goldfuture-Renditen erkannt werden.
+							Es sind eindeutig Perioden mit höheren und mit niedrigeren Volatilitäten zu erkennen.
+							</p>
+
+							<p style = "margin:0;">Volatilität der Goldfuture-Renditen über die Dauer der Stichprobe:</p>
+							<a{text-decoration:none;}><img src="images/Gold Prices/GoldfutureRenditen.svg" height="auto" width="60%"/></a>
+
+
+							<p>
+							Auch der Lagrange-Multiplier-Test (auch LM-Test genannt) kann mit einer Chi-Quadrat-Statistik von 155.25 die Null-Hypothese vom Vorliegen von konstanter Volatilität
+							 zum 1 %-Signifikanzniveau ablehnen (Engle 1982).
+							</p>
+
+							Um den theoretischen Teil zu verkürzen und sich auf die empirischen Ergebnisse zu konzentrieren, wird das Modell hier nicht im Detail vorgestellt.
+							
+
+							Für die Anwendung in einem GARCH-Modell müssen die Daten Stationarität vorweisen. Aus diesem Grund werden verschiedene Einheitswurzeltests durchgeführt. 
+							Die folgende Tabelle zeigt, die Ergebnisse der durchgeführten „erweiterten Dickey-Fuller-Tests“ 
+							einmal in einem Modell mit Konstante und einmal in einem Modell mit Konstante und Trend. Wie vermutet kann die Nullhypothese der Präsenz einer 
+							Einheitswurzel in allen Fällen abgelehnt werden, somit sind sowohl alle Renditen also auch die Spekulati-onsmaße TS und LS als Niveauvariablen stationär. 
+							
+							<br>
+							<br>
+
+							<p style = "margin:0;">Ergebnisse der Einheitswurzeltests:</p>
+							<a{text-decoration:none;}><img src="images/Gold Prices/Augmented Dickey Fuller Test.svg" height="auto" width="70%"/></a>
+						
+							<br>
+							<br>
+							<p>Um die GARCH-Modelle nun noch korrekt anzupassen, müssen die Verteilung der Daten und die Ordnung des Durchschnitts- und Varianzmodell spezifiziert werden. 
+								Anhand der nächsten Abbildung ist bereits zu sehen, dass die Daten einer Normalverteilung ähneln. 
+								In der Praxis stellt die Unterscheidung zwischen Normal- und t-Verteilung keinen kritischen Punkt dar, solange eine große Stichprobe vorliegt. 
+								Hier nähert die t-Verteilung sich nämlich der Normalverteilung immer weiter an</p>
+								
+
+							<p style = "margin:0;">Histogramm der Goldfuture-Renditen:</p>
+							<a{text-decoration:none;}><img src="images/Gold Prices/VerteilungGoldRenditen.svg" height="auto" width="60%"/></a>
+
+
+							
+							<p>Für die genaue Spezifikation des Durchschnittsmodells werden die Autokorrelations- und partiellen Autokorrelationsfunktionen betrachtet 
+								sowie verschiedene AR- und ARMA-Modelle geprüft, um die bestmögliche Spezifikation zu gewährleisten.
+								Die nächste Abbildung zeigt dabei die Ergebnisse der Autokorrelationsfunktionen für die gesamte Stichprobe. 
+								Hier ist zu sehen, dass scheinbar keine signifikante Autokorrelation vorliegt, da keine der Verzögerungen das 5 % Konfidenzintervall überschreiten kann. 
+								Für die beiden Teilstichproben zeigen sich dieselben Ergebnisse. 
+								Dieses Ergebnis ist durchaus verwunderlich, deshalb sollen im Folgenden die Ergebnisse der AR- und ARMA-Modelle über die finale Spezifikation entscheiden.</p>
+
+							<p style = "margin:0;">Darstellung der Autokorrelationsfunktionen der Goldrenditen:</p>
+							<a{text-decoration:none;><img src="images/Gold Prices/Autokorrelationsfunktionen.svg" height="auto" width="60%"/></a>
+
+							<p>Die folgende Tabelle zeigt die t-Statistiken der Koeffizienten der AR und MA-Modelle für die ver-schiedenen Stichproben, 
+								die letztendlich in den GARCH-Modellen getestet werden sollen. 
+								Hier ist zu sehen, dass in der gesamten Stichprobe und dem Zeitraum von 2013-2020 doch signifikante Autokorrelation vorliegt und am besten durch ein ARMA (1,1) Modell dargestellt werden kann. 
+								Für die Periode von 2006-2013 wird für das Durch-schnittsmodell ein AR(0) Modell gewählt, da kein AR- oder ARMA-Koeffizient Signi-fikanz aufweist. Für die Spezifikation des Varianzmodells wird ein Standard GARCH-Modell mit Ordnung (1,1) genutzt.</p>	
+
+
+							<p style = "margin:0;">T-Statistik der Koeffizienten der AR- und ARMA-Modelle:</p>
+							<a{text-decoration:none;><img src="images/Gold Prices/TStatistik Coefs AR(MA).svg" height="auto" width="60%"/></a>
+
+							<h2><strong>Ergebnisse der Schätzung</strong></h2>
+							<p>Die folgende Tabelle zeigt die Ergebnisse der GARCH-Modell-Schätzungen aller drei Zeiträume. 
+								Der Anteil der gesamten Spekulation an den offenen Positionen (TS) ist durchweg positiv und nicht signifikant, der Anteil der Long-Spekulation an den offenen Positionen (LS) ist durchweg negativ und ebenfalls nicht signifikant. 
+								Dies zeigt, dass die hier gewählten Spekulationsmaße keinen Einfluss auf die Renditen von Goldfutures haben, da die Koeffizienten nicht signifikant von null abweichen. 
+								Zudem würde man beim Ein-fluss der Long-Spekulation ein positives Vorzeichen erwarten, da, wie auch die Masters-Hypothese vermutet, 
+								bspw. verstärkter Indexfondshandel Preise nach oben treibt. </p>
+
+							<p>
+								Die Koeffizienten der Kontrollvariablen haben allesamt und in allen drei Modellen die erwarteten Vorzeichen. 
+								Der Koeffizient für die Rohölpreise ist positiv und für die Mo-delle 1 und 2 signifikant. 
+								Im Zeitraum 2006-2013 ist der Zusammenhang zudem deut-lich stärker (-0,0625 zu -0,009). 
+								Da in diesem Zeitraum auch die Rohölpreise sehr stark gestiegen sind unterstützt dies die These eines engen Zusammenhangs von Gold und Rohölpreise, wie er auch von Arfaoui und Ben Rejeb (2017) vermutet und gezeigt wird. 
+								Auch der Koeffizient des S&P 500 ist in diesem Zeitraum deutlich höher, was durchaus einleuchtend ist, da die Weltfinanzkrise 2007 in diesen Zeitraum hineinfällt. 
+								Die Turbulenzen am Aktienmarkt haben Investoren in diesem Zeitraum in den sicheren Hafen Gold getrieben (Baur und Lucey 2010). 
+								Der Koeffizient für die US-amerikanischen T-Bills hat zwar das erwartete Vorzeichen, ist hingegen sehr klein und weist zudem keine Signifikanz auf. 
+								Der Koeffizient für die Wechselkurse hat in allen drei Modellen, den mit Abstand größten Einfluss auf die Goldpreise und ist durchgehend signifikant. 
+								Dies zeigt die Wichtigkeit des US-Dollar-Wechselkurses für den Goldpreis, der die mit Abstand wichtigste Determinante von Goldfuture Preisen darstellt.
+							</p>
+
+							<p style = "margin:0;">GARCH Model Results:</p>
+							<a{text-decoration:none;><img src="images/Gold Prices/GARCH MODEL RESULTS.svg" height="auto" width="60%"/></a>
+
+							<br>
+							<br>
+							<br>
+
+							<h3><strong>Der ARCH und GARCH-Effekt</strong></h3>
+							<p>
+							Die Schätzungen für α<sub>1</sub> also den ARCH-Effekt sind sehr klein und signifikant während die für β<sub>1</sub> also den GARCH-Effekt sehr hoch (nah an 1) und signifikant sind.
+							Dies zeigt eine langanhaltende Persistenz von Shocks.
+							Ein Shock der Volatilität der Goldfuture-Renditen hat also für einen langen Zeitraum Einfluss auf die zukünftige Volatilität dieser Renditen (Manera et al. 2013). 
+							In allen drei Modellen ist die Bedingung α<sub>1</sub>+β<sub>1</sub> < 1 gegeben. 
+							Das bedeutet, dass auch die notwendigen Bedingungen für die Konsistenz und die asymptotische Normalität des QMLE-Schätzers gegeben sind (McAleer et al. 2007).
+							Der LM-ARCH Test lehnt die Null-Hypothese eines adäquat angepassten ARCH-Prozesses in allen drei Modellen nicht ab. Das bedeutet, dass die vorliegenden Modelle durch die entsprechende Spezifizierung die ARCH-Effekte ausreichend gut aufnehmen (Engle 1982). 
+							Der gewichtete Ljung-Box Test auf die standardisierten und quadrierten Residuen lehnt für die Modelle 1 und 2 die Nullhypothese des Nicht-Vorliegens serieller Korrelation in den quadrierten Residuen nicht ab. 
+							Dies bedeutet, dass die gewählte Spezifikation des GARCH-Modells Autokorrelation und über die Zeit variierende Volatilität in der Zeitreihe gut aufnehmen und diese nicht mehr in den Residuen verbleiben (Box und Pierce 1970; Ljung und Box 1978). 
+							Jedoch ist dies für Modell 3 nicht der Fall. Hier wird die Nullhypothese des Tests abgelehnt, somit verbleibt Autokorrelation und über die Zeit variierende Volatilität in den Residuen, das Modell ist entsprechend nicht perfekt spezifiziert. 
+							Da sich die Vermutung, dass Spekulation die Goldpreise treiben könnte, jedoch vor allem auf die die Periode von 2003 bis 2013 mit ihren extremen Rohstoffpreissteigerungen bezieht, bleibt dies jedoch eine eher kleine Sorge. 
+							Der Fokus sollte hier weiter auf den Ergebnissen des Modells 2 liegen, das einen Einfluss von Spekulation auf Goldpreise in einem adäquat spezifizierten Modell eindeutig verneint. 
+							Dass das Modell 3 nicht perfekt spezifiziert ist, weist nicht unbedingt darauf hin, dass ein Fehler in der Modellierung vorliegt. Es ist durchaus möglich, dass es nach der Rally, also nach 2013, eine Veränderung der Zusammenhänge und Einflüsse durch einen strukturellen Bruch gab und sich somit auch das optimale Modell verändert hat. 
+							Dieses Phänomen wurde bereits ausführlich in der Prognosemodell-Literatur für geläufige Wertpapiere dokumentiert (Hartmann et al. 2008; Perez-Quiros und Timmermann 2000; Rapach 2006). 
+							Auch speziell für Goldfutures wurde diese Veränderung bereits festgestellt. So finden Pierdzioch et al. (2014) in ihrem Langzeitprognosemodell für Goldrenditen ebenfalls Hinweise auf einen Strukturbruch und Veränderungen des optimalen Prognosemodells
+							</p>
+						
+
+				</article>
+									
+			<!-- Footer -->
+				<footer id="footer">
+
+					<!-- <ul class="icons">
+						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+					</ul> -->
+
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

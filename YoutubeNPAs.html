@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>No Sidebar - Twenty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="no-sidebar is-preload">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Dirk Laschat <span style="margin-left: 0.5cm;">Research and Data Science Portfolio</span></a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="current"><a href="index.html">Landing Page</a></li>
+							<!-- <li class="submenu">
+								<a href="#">Layouts</a>
+								<ul>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li class="submenu">
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Dolore Sed</a></li>
+											<li><a href="#">Consequat</a></li>
+											<li><a href="#">Lorem Magna</a></li>
+											<li><a href="#">Sed Magna</a></li>
+											<li><a href="#">Ipsum Nisl</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button primary">Sign Up</a></li> -->
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<h2><strong>Non-Professional Stock Analysts on Youtube</strong></h2>
+						<p>A rise in free time due to the COVID-19 Pandemic accompanied by three rounds of US stimulus checks and the rise of so-called "neobrokers" attracted many young retail investors to increase their participation in 
+							the capital markets. These young investors are more likely to retrieve their information online and might not be willing to pay for this information due to tighter budget constraints. Thus, Social Media Platforms and especially Youtube
+							with its large userbase and convenient video content seems to be an attractive source of information for young retail investors.</p>
+							
+						<br>But who are the people providing this information? Are these Finance Youtubers trustworthy or do they behave with strategical calculus to maximize profits?
+							Do do so I gathered the subtitles of their uploaded videos and evaluated the text via natural language processing. </br>
+							<br>
+							<p>This page will tell the story around the data, explain intuitions behind the examination and interpret the results.
+								<br><strong style="font-weight: 800;">Python-code will soon be available</strong> by following the buttons below:</br>
+								(if you are interested in my coding examples please visit one of the other topics)</p>
+	
+							<ul class="buttons stacked">
+								<li><a href="#####.html" class="button fit scrolly">Soone to come... Data Gathering via Youtube-API </a></li>
+								<li><a href="######.html" class="button fit scrolly">Soone to come... Natural Language Processing</a></li>
+							</ul>
+
+					</header>
+
+					<!-- One -->
+						<section class="wrapper style4 container" color="blue">
+
+														<!-- Three -->
+		
+							<section class="wrapper style3 container special">
+
+							<header class="major">
+								<h2><strong>Development of Stock-Market Related Activity on Youtube</strong></h2>
+							</header>
+
+							<p>On the one hand, to confirm the impression that supply of financial market videos on Youtube heavily increased especially during the pandemic, we can plot the number of videos containing stock market content over time. 
+								On the other hand, we can use retail activity in the stock market as a proxy for demand of financial advice.
+							<br>
+							<br>
+							As the data for value and volume of retail trading is not available, I used a png-file and plotted the number of capital market Youtube-videos as an second layer over this png-file.
+							It is easy to see that video activity as well as demand for financial advice (retail stock market participation) strongly increased from the beginn of the pandemic.
+							</p>
+								
+
+							<p style = "margin:0;">Retail Investor Activity and Amount of Videos Over Time:</p>
+							<a{text-decoration:none;}><img src="images/YoutubeNPAs/Retail Trade and Videocount.svg" height="auto" width="50%" alt="Retail Trade and Videocount"/></a>
+							<br>
+							<br>
+
+							<p>Next, it is interesting to see how many new content creators entered Youtube during this "hype-period" to provide their content. 
+								To answer this question, we can plot the point in time of their first video upload.
+								Indeed, the start of the COVID pandemic in early 2020 marks the point with most first-time uploaders in our dataset.
+								Thus, the impression that Youtube Financial Analysts are a rather new phenomenon and increased in relevance during the pandemic can be confirmed.
+							</p>	
+
+							<p style = "margin:0;">Point of NPAs First Video Upload:</p>
+							<a{text-decoration:none;}><img src="images/YoutubeNPAs/First Video Upload.svg" height="auto" width="40%"  alt="Retail Trade and Videocount"/></a>
+
+
+
+							<h2 style="margin-top: 2em;"><strong>Distribution of Covered Stock-Market Topics</strong></h2>
+
+							<p>In a next step, we will have a closer look at the topics the different channels cover. 
+								Addtional to videos with stock-market content, we can identify videos about related topics like taxes, pension and saving which we can call 
+								"money related" videos as well as videos which are not related to the field of money and investing which we can call "other videos". 
+								We can plot these different categories into a stacked bar plot, where each bar represents 
+								one channel's distribution between those three topics.</p>
+
+							<p>The chart shows that the landscape of Youtube Financial Analysts is quite heterogeonous. 
+								Some provide stock market videos only, while others have a larger share of money related topics or even non-financial videos.</p>
+							
+							<p style = "margin:0;">Comparison Capital Markets, Money-Related and Other Videos:</p>
+							<a{text-decoration:none;}><img src="images/YoutubeNPAs/Content Distribution.svg" height="auto" width="40%"  alt="Content Distribution"/></a>
+							<br>
+							<br>
+							
+							<p>We can even digg a bit deeper and devide the previously mentioned stock market-video-category into sub-categories like news about the general markets, videos about crypto, about stocks, about options, ETFs or commodities, bonds or real estate.</p>
+
+							<p>Again by doing so, we can see quite some differences between channels. However the focus of Youtube NPAs seem to lie on the analysis of stocks. Since those as well as market news cover the major amount of activity on the different channels.
+								Only some channels provide info to crypto and options, which are usually more risky plays. Other topics (which are usually perceived more conservative) are rather underrepresented.
+							</p>
+
+
+							<p style = "margin:0;">Topic Distribution within Capital Market Videos:</p>
+							<a{text-decoration:none;}><img src="images/YoutubeNPAs/Distribution within capital markets.svg" height="auto" width="80%"  alt="Distribution within Capital Markets"/></a>
+
+							<br>
+							<br>
+
+
+							<header class="major">
+								<h2><strong>Are There Indicators of Trustworthyness?</strong></h2>
+							</header>
+
+
+							<p>Are there even more characterisitics which might differentiate Youtube analysts from each other? Probably many people may think of Youtube as being a untrustworthy place to
+								receive information about the stock market. However there are large differences in the characteristics the landscape of NPA Youtube channels has to offer.
+								Some Youtubers might prefer to cover large cap stocks compared to micro- caps or penny stocks. Here, especially the latter channels might be perceived as rather dubious.
+								Furthermore there are channels, which upload a higher share of educational videos, which might help people looking for information more, than the advertisement of a single or
+								group of stocks. The following two charts show the shares of educational videos and the average market cap covered on a channel (the latter in relation to the largest
+								market cap at the time of the video's upload). Again we there are very heterogeonous results form around 40 to 0 percent of educational videos and from covering micro-cap 
+								stocks to only covering the largest market cap stock.</p>
+							</p>	
+
+							<br>
+
+								<div class="row">
+									<div class="col-6 col-12-narrower">
+	
+										<section>
+											<p style = "margin:0;">Share of Educational Videos:</p>
+											<a{text-decoration:none;} class{background: none}="image featured"><img src="images/YoutubeNPAs/educational content.svg"  width="70%" height="auto" /></a>
+										</section>
+	
+									</div>
+									<div class="col-6 col-12-narrower">
+	
+										<section>
+											<p style = "margin:0;">Average Market Cap of Mentioned Stocks:</p>
+											<a{text-decoration:none;} class{background: none}  ="image featured"  ><img src="images/YoutubeNPAs/Channel Marketcap Share.svg" width="70%" height="auto"  /></a>
+										</section>
+							        </div>
+								</div>
+
+								<br>
+								<br>
+
+								<p>Addtionally, we might have the impression that Youtubers, who uploaded their first video during the start of the pandemic, might have the
+									aim to make easy pickings. On the other hand, there might be an entry strategy many of those new entrants try to establish to gain views (e.g focussing on a certain topic).
+									Thus, they might differ in the coverage of topics to incumbents which already started uploading stock market videos in the pre-pandemic period.
+									<br>
+									<br>
+									It is visible, that incumbents are way more diversified in their video topics compared to entrants.
+									While entrants seem to largely focus on individual stocks, incumbents cover a higher share of ETF- and market news related videos as well as non-finance videos.	
+								</p>
+
+								<br>
+
+							<p style = "margin:0;">Topics Over Time - Comparison Incumbents vs. Entrants:</p>
+							<a{text-decoration:none;}><img src="images/YoutubeNPAs/Incumbents vs. Entrants.svg" width="80%" height="auto" /></a>
+							
+							<br>
+							<br>
+							<br>
+
+							<p>Evaluating the correlation between the VIX, which is known as the stock market's "fear index" and the amount of individual stock videos uploaded, 
+								we can see that spikes in the VIX seem to align with spikes in the amount of single stock-related videos.
+								A possible interpretation is, that when there is major volatility analysts try to cater the demand for information about individual stocks.
+								<br>
+								<br>
+								The same evaluation can be done regarding the price of Bitcon and the amount of crypto-related videos uploaded. Here, the correlation is easy to see. 
+								The number of uploaded crypto-videos slightly lags the price of Bitcoin.
+								Thus, when bitcoin rises, related channels will produce more videos covering crypto currencies.
+	
+							</p>
+
+							<br>
+
+								<div class="row">
+									<div class="col-6 col-12-narrower">
+	
+										<section>
+											<p style = "margin:0;">Correlation VIX & Stock-Videos:</p>
+											<a{text-decoration:none}; class{background: none}="image featured"><img src="images/YoutubeNPAs/VIX and Video Uploads.svg"  width="70%" height="auto" /></a>
+										</section>
+	
+									</div>
+									<div class="col-6 col-12-narrower">
+	
+										<section>
+											<p style = "margin:0;">Correlation Bitcoin & Crypto-Videos:</p>
+											<a{text-decoration:none;} class{background: none} ="image featured" ><img src="images/YoutubeNPAs/BTC and Crypto-Video Uploads.svg" width="70%" height="auto"  /></a>
+										</section>
+									</div>
+								</div>
+
+								<br>
+								<br>
+
+							<p>As crypto channels might be considered particularly dubious, we can have a look at the distribution of topics over time for those channels.
+								When doing so, we can clearly see a pattern of behavior.
+								While they initially set their specialization into crypto (high share of videos covering crypto currencies), those channels change towards 
+								covering single stocks during times where crypto was not performing as well as single stocks or the whole market. 
+								When the volatility in Bitcoin started to rise (and even explode) again in the early 2021, their share of crypto videos increased again.
+	
+							</p>
+
+							<br>
+							<br>
+
+							<p style = "margin:0;">Topic Distribution of Top Crypto Channel Over Time:</p>
+							<a{text-decoration:none;}><img src="images/YoutubeNPAs/Crypto Channels.svg" width="60%" height="auto" /></a>
+							<br>
+							<br>
+							<p>We can compare this behavoir to channels which might be considered less dubious. For example channels which do cover a large share of educational content or 
+								to channels which do have a larger portion of non-finance videos.
+								Here, we can see that those channels are way more stable in their behavior, that means they do not change their focus as much as the crypto channels do.
+								Additionally, a large proportion of their videos is about ETFs, which are considered less risky.
+
+							</p>
+
+							<p style = "margin:0;">Contrary Behavior:</p>
+							<a{text-decoration:none;}><img src="images/YoutubeNPAs/Topic Dist. Educational Channels.svg" width="90%" height="auto" /></a>
+							
+							<br>
+							<br>	
+							<p>As a final step, we may ask ourselves if the recommendations of those finance youtubers can be efficient. 
+								That means, if we would have invested in the stocks they recommended, would we have made a profit or do stock prices regularly decrease after the recommendation?
+								To answer this question, the subtitles of the videos are evaluated and checked for the mentioned stocks. 
+								Then, the stock price development is plotted over time and a marker is inserted at the point of the recommendation.
+								<br>
+								<br>
+								We can see that in many cases recommendations occur in the time of a stock's price increase or even near the top of the price increase.
+								Only in rare occasions, an investment in the recommended stock would have been profitable.
+							</p>
+							<p style = "margin:0;">Recommendation Timings:</p>
+							<a{text-decoration:none;}><img src="images/YoutubeNPAs/Recommendation Timings.svg" width="95%" height="auto"  /></a>
+							
+
+							<!-- <footer class="major">
+								<ul class="buttons">
+									<li><a href="#" class="button">See More</a></li>
+								</ul>
+							</footer> -->
+
+						</section>
+
+				</article>
+									
+			<!-- Footer -->
+				<footer id="footer">
+
+					<!-- <ul class="icons">
+						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+					</ul> -->
+
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

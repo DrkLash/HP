@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>No Sidebar - Twenty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="no-sidebar is-preload">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+			<header id="header">
+				<h1 id="logo"><a href="index.html">Dirk Laschat <span style="margin-left: 0.5cm;">Research and Data Science Portfolio</span></a></h1>
+				<nav id="nav">
+					<ul>
+						<li class="current"><a href="index.html">Landing Page</a></li>
+						<!-- <li class="submenu">
+							<a href="#">Layouts</a>
+							<ul>
+								<li><a href="left-sidebar.html">Left Sidebar</a></li>
+								<li><a href="right-sidebar.html">Right Sidebar</a></li>
+								<li><a href="no-sidebar.html">No Sidebar</a></li>
+								<li><a href="contact.html">Contact</a></li>
+								<li class="submenu">
+									<a href="#">Submenu</a>
+									<ul>
+										<li><a href="#">Dolore Sed</a></li>
+										<li><a href="#">Consequat</a></li>
+										<li><a href="#">Lorem Magna</a></li>
+										<li><a href="#">Sed Magna</a></li>
+										<li><a href="#">Ipsum Nisl</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#" class="button primary">Sign Up</a></li> -->
+					</ul>
+				</nav>
+			</header>
+
+
+				<!-- One -->
+				<article id="main">
+
+					<header class="special container">
+						<h2><strong>MONETARY POLICY'S INFLUENCE ON COMMODITY PRICES
+						</strong></h2>
+							
+						<br>A mere look at supply and demand can explain a large portion of the changes in commodity prices, but simplification to only these two factors is not enough (Hamilton 2009). In this context, Frankel (2006) did seminal groundwork by extending Dornbusch (1976) exchange rate overshooting model to the case of commodity prices. According to this model, an increase in the nominal money supply must be compensated by the same change in the general price level. Since prices are partly sticky the following decline in real interest rate increases the flexible commodity prices mainly through a) lower opportunity cost in warehousing and b) higher demand for commodity derivates c) lower costs of holding inventories “in the ground”. This increase overshoots commodities’ equilibrium prices in the short run. In the long run prices move back to equilibrium because of increased inventories leading to new profitable projects while high prices distract investors from buying futures. Commodity prices thus fall while the general price level rises. 
+						Frankel's work is bolstered by the findings of Barsky and Kilian (2001) and Barsky and Kilian (2004) who show that the monetary policy stance can predict commodity prices and that the particular oil price increase in the 1970s could be caused at least partly by monetary policy.
+						</br>
+						</br>
+						<p><strong><em>The following content will show excerpts of one of my seminar papers during my Master of Economics.</em></strong></p>
+						<p><strong><em><strong style="font-weight: 800;">To directly jump to the R-Code </strong> use the button below:</em></strong></p>
+						<ul class="buttons stacked">
+							<li><a href="Commodity_Code.html" class="button fit scrolly">To R-Code Example</a></li>
+						</ul>
+					</header>
+
+
+						<section class="wrapper style4 container" color="blue">
+
+							<!-- Content-->
+							<section class="wrapper style3 container special">
+
+							<h2><strong>Data and Approach</strong></h2>
+							<p>As in most of the current literature an SVAR capturing the relationship between the most heavily traded commodities from different classes and their macroeconomic determinants will be estimated. The most important commodity classes are agricultural and energy commodities as well as metals and precious metals. 
+								Within these classes soybean, oil (Crude Brent), iron (ore) and gold are heavily traded goods (CFTC 2020). 
+								Their response to a monetary policy shock will be evaluated separately in a structural VAR model including the US's industrial production index, the US's consumer price index, the federal fund rate's shadow rate and the US's monetary stock M2. 
+								Subsequently called: IP, CPI, SR and M2. The commodity prices will be called P<sup>Soy</sup>, P<sup>Oil</sup>, P<sup>Iron</sup> and P<sup>Gold</sup>. 
+								IP, CPI and M2 are obtained from the federal reserve bank of St. Louis' database while commodity prices are retrieved from the IMF commodity database. 
+								Lastly the federal fund rate's shadow rate as defined and measured by Wu and Xia (2014) can be downloaded from Dr. Jing Cynthia Wu's website. 
+								Including its shadow rate and not the federal fund rate itself is supposed to counter the fact that the federal fund rate is limited to zero percent. 
+								The shadow rate is supposed to be a promising means to more accurately evaluate monetary policy's actions beyond the zerolower bound. 
+								It additionally embodies a new interesting feature compared to already existing literature.
+							<br>
+							<br>
+							A subsample of the data form beginning of 1990 to the end of 2015 is used. 
+							This is due to the exclusion of the Great Inflation and the Fed's following aggressive anti-inflation policy till 1982. 
+							Additionally, in early 1990 the Fed began to implicitly use inflation targeting and thus the federal fund rate as its policy instrument (Bordo 2007).
+							</p>
+								
+							<h2><strong>The Model</strong></h2>
+							<p>Structural restrictions on the contemporaneous effects of innovations are employed to identify monetary policy shocks. 
+								Here information from the shadow rate and the monetary aggregate of the US are used. 
+								The identification strategy follows Kim (1999) identification scheme, since it is rather handy, widely used in the literature and has been proven consistent with other methods (Anzuini et al. 2012). 
+								The reason to include both the interest rates and M2 is that hereby endogenous responses of monetary policy to general developments in the economy are considered (Kim 1999).
+								<br>
+								<br>
+								To shorten the theoretical part and to focus on the empirical results, the model is not presented in detail here.
+								I only show the final system, which will be estiamted and explain the equations intuitions:
+								<br>
+								</p>
+
+								<p style = "margin:0;">The Estimated System:</p>
+								<a{textdecoration:none;}><img src="images/Commodities/VAR Model.png" height="auto" width="30%"/></a>
+
+							</p>w<sub>t</sub> denote the structural disturbances while the u<sub>t</sub> are the residuals in the reduced form equations.
+							They represent unexpected movements (given the information in the system) of each variable by construction. 
+							The first two rows of the VAR system imply the hypothesis of price stickiness and ad-justment costs. 
+							Economic activity is assumed to not directly respond to innovations on the system of variables but only with a lag. 
+							The second line embodies a money supply equation modeled as a reaction function of the monetary authority. 
+							It is assumed that, due to information delays, current levels of prices and production are not accessible to the monetary authorities. 
+							The third row reflects a money demand equation. It is a function of real income, the opportunity cost of holding money, and the nominal interest rate. 
+							Lastly, the fourth equation is an arbitrage condition, which describes the equilibrium in the commodity market. 
+							The commodity price is affected simultaneously by all other variables
+							</p>
+							
+							<h2><strong>Test the Appropriateness of the Data</strong></h2>
+
+
+							<p>Since a VAR analysis requires stationary inputs, various unit root tests were calculated. 
+								The results are captured in Table 1 and Table 2. There is no evidence for stationarity in levels for all variables except the CPI. 
+								Admittedly, the KPSS test suggests stationarity in some of those cases, but in most of them the value of the LMStatistic is quite close to 10 % significance, meaning close to a rejection of the null hypothesis of no unit root. 
+								Additionally, both other tests suggest a unit root, such that there is no reasonable argument for assuming stationarity in levels for those variables, especially regarding the fact that the KPSS test is the strictest one employed.</p>
+
+							<p style = "margin:0;">Unit Root Test on the Level Variable:</p>
+							<a{textdecoration:none;}><img src="images/Commodities/Unit Root Test on Levels.png" height="auto" width="60%"/></a>
+							<br>
+							<br>
+							<p>After taking the first differences of all other variables, stationarity is clearly created. Hence the first differences of the logarithmized INP, M2 as well as the commodity prices are used. 
+								For the Shadow Rate the unlogarithmized first differences are used since in the previous chapter the model was introduced to be a loglin one. 
+								Please note that the null hypothesis of the KPSS test is stationarity, thus there is no unitroot, while the null of the ADF and PhillipsPerron tests are that there is a unit root.</p>
+															
+
+							<p style = "margin:0;">Unit Root Test on Differences:</p>
+							<a{textdecoration:none;}><img src="images/Commodities/Unit Root Test on Differences.svg" height="auto" width="60%"/></a>
+							<br>
+							<br>
+							<p>To choose the appropriate lag order the Akaike, Schwarz and HannanQuinn information criteria are considered. 
+								For application purposes there is no inherent interest in the true lag order of the process. 
+								It is only of interest that the employed statistics can be calculated consistently. 
+								This is the case if the lag order is not underestimated asymptotically. 
+								All three information criteria can guarantee this (Kilian and Lütkepohl 2017). 
+								The following table shows the lag order suggested by the information criterias as well as the finally employed lag order for the four different models. 
+								Since the Schwarz and the HannanQuinn information criteria both suggest the same lag order of one this is adopted to the model in order to create a more parsimonious as well as better identified model.
+							</p>
+							<p style = "margin:0;">Lagg Selection:</p>
+							<a{textdecoration:none;}><img src="images/Commodities/Lagg selection.svg" height="auto" width="50%"/></a>
+							<br>
+							<br>
+							<h2><strong>Estimation Results</strong></h2>							
+
+							<p>Subsequently, impulse response functions with their bootstrapped confidence intervals will be analyzed. 
+								The impulse response functions in Figure 1 show the dynamic response to a 100 basis points increase in the Shadow Rate for the individual commodity prices considered. 
+								All four commodities show a definitive overshooting behavior in line with the insights of Frankel (2006) with oil showing the strongest reactions peaking in the second quarter with a decrease of 17.4 %. 
+								Afterwards, the magnitude of the effect decreases strongly in quarters 3 and 4 compared to the period from quarter 4 to 12. 
+								The effect stays negative and significant over the whole considered period of 12 quarters. 
+								A similar but less strong reaction can be observed for soybean prices. Here the peak in the second quarter shows a decrease of 11.79 % with convergence behavior back to zero slower than oil prices. The shock thus is more persistent to soybeans than to oil prices. 
+								Iron prices react less strongly with a peak of 7 %. Here the confidence interval lays within the negative boundaries within the first three quarters. 
+								The actual impulse response function of gold shows the smallest effect with a decrease of 3.1 % in its peak. However, the effect does not seem to be significant at all. 
+								An interesting fact is that the shapes of the impulse response functions are very similar. 
+								The overshooting peaks in the second quarter for all four commodities investigated.</p>
+
+							<p style = "margin:0;">Impulse Responses to a 100 Basis Points Increase in the Shadow Rate:</p>
+							<a{textdecoration:none;}><img src="images/Commodities/IRF.svg" height="auto" width="60%"/></a>
+
+							<br>
+							<br>
+							
+							<p>Further insights can be gained by analysis of the forecast error variance decompositions of the set of variables at hand. 
+								It shows the prediction error's variance made in forecasting a variable due to the shocks identified in the structural restrictions. 
+								In a nutshell: It is possible to show monetary policy's relative contribution and thus its importance to fluctuations in commodity prices (Kilian and Lütkepohl 2017). 
+								Figure 2 shows this relative contribution of the model's variables to the considered commodity prices. We can see that there is at most a partial importance: 
+								Monetary policy seems to play only a tiny role for the movements in oil and gold prices with a forecast error variance of 1.5 and 2.8 percent, respectively. 
+								Even if monetary policy can cause fluctuations in the oil price significantly, it seems to be only a reason for the very minority of the movements in oil prices. 
+								For soybean and iron things slightly change. Here Monetary Policy accounts for 14.4 and 8.2 percent of the respective price fluctuations. 
+								This is still a quite small but noteworthy effect.</p>
+
+
+							<p style = "margin:0;">Forward Error Variance Decomposition for All Quarterly Models:</p>
+							<a{textdecoration:none;}><img src="images/Commodities/FEVD Quarterly Model.svg" height="auto" width="55%"/></a>
+
+							<p>
+							The previously obtained results however can be set neatly into the already existing literature. 
+							First of all, the insignificant influence of monetary policy on gold prices: 
+							This result is not necessarily surprising, especially considering gold's special characteristics in the market. 
+							Gold is often said to be a hedge towards inflation which would increase prices with the higher monetary policy activity is. 
+							It can however be shown that it lost this characteristic in the late 1990s and early 2000s. 
+							There are also ambiguous findings of the effects of QE announcements of different central banks on the gold price. 
+							Dependent on which central bank announces a QE it leads to a strong, weak, or even no effect (Zhu et al. 2018). 
+							These facts as well as possible interference with other characteristics like gold as a safe haven can be possible sources of the insignificance.
+							
+							<br>
+							<br>
+							Evidence for smaller importance of monetary policy on oil prices is also observed by Kilian and Vega (2011). 
+							These authors find that all macroeconomic news combined can only explain less than two percent of the variation in monthly oil and gasoline prices. 
+							Literature also suggests relatively stronger and more persistent reactions of agricultural commodities to a monetary shock (Akram 2009; Anzuini et al. 2012).
+							The explanation of the impact channel of monetary policy on foodrelated commodities however might be a bit more complicated. 
+							A possible explanation is that the global food supply is reduced by the implicit oil price increase of a monetary policy shock. 
+							This is due to the impacts and diversion of food commodities and cropland to produce biofuels (Timilsina et al. 2011).
+							</p>
+
+
+
+
+							<h2><strong>Checking Robustness With a Monthly Model</strong></h2>
+
+
+
+							<p>The results of a monthly model are generally in line with the ones obtained from the main model.
+								The shapes of the impulse response functions as well as the confidence bands are similar to the ones of the main model. 
+								The peak of the price-overshooting takes place after 4 months in all models, while the confidence bands show significance when the overshooting kicks in for oil and soybean.
+								The effect on iron is again only partly significant and there is no significant effect on gold. 
+								It is easy to see that the expected price reaction of the commodities does not happen instantaneously. 
+								It rather takes about three months until the overshooting of the price starts.
+							</p>
+
+							<p style = "margin:0;">Impulse Responses to a 100 Basis Points Increase in the Shadow Rate (Monthly Model):</p>
+							<a{textdecoration:none;}><img src="images/Commodities/IRF Month.svg" height="auto" width="60%"/></a>
+
+							<p>Concerning the Forward Error Variance Decomposition, the results are also very similar.
+								There are nevertheless also slight changes.
+								The importance of monetary policy's influence rises when considering the monthly horizon for oil (9 %), while it decreases for soybean (5.7 %) and iron (2,6 %). 
+								In the case of oil and especially iron the industrial production emerges more and plays a role in the price changes in those commodities. 
+							</p>
+
+							<p style = "margin:0;">Forward Error Variance Decomposition for All Monthly Models:</p>
+							<a{textdecoration:none;}><img src="images/Commodities/FEVD Monthly Model.svg" height="auto" width="60%"/></a>
+
+							<p>Overall, regarding both model specifications results from the literature are in line with the present findings.
+								The estimated results show that there is a significant negative relationship between monetary policy and the prices for oil, iron and soybean. 
+								The estimates for gold however are statistically insignificant. 
+								All prices additionally show a distinct overshooting behavior after Frankel (2006). 
+								The contribution of monetary policy shocks to overall changes of the investigated commodity prices is however only quite small, saying that monetary policy only plays a minor role for the formation of commodity prices.
+							</p>
+
+
+
+
+				</article>
+									
+			<!-- Footer -->
+				<footer id="footer">
+
+					<ul class="icons">
+						<li><a href="#" class="icon brands circle fatwitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands circle fafacebookf"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands circle fagoogleplusg"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon brands circle fagithub"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands circle fadribbble"><span class="label">Dribbble</span></a></li>
+					</ul>
+
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+				</footer>
+
+		</div>
+
+		<! Scripts >
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

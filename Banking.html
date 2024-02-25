@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>No Sidebar - Twenty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="no-sidebar is-preload">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Dirk Laschat <span style="margin-left: 0.5cm;">Research and Data Science Portfolio</span></a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="current"><a href="index.html">Landing Page</a></li>
+							<!-- <li class="submenu">
+								<a href="#">Layouts</a>
+								<ul>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li class="submenu">
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Dolore Sed</a></li>
+											<li><a href="#">Consequat</a></li>
+											<li><a href="#">Lorem Magna</a></li>
+											<li><a href="#">Sed Magna</a></li>
+											<li><a href="#">Ipsum Nisl</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button primary">Sign Up</a></li> -->
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<h2><strong>MEASURING SYSTEMATIC RISK IN THE EUROPEAN BANKING SECTOR</strong></h2>
+
+						<p>
+							There is great interest in the exact structure of the network that European financial institutions form among themselves. 
+							Which institutions pose the greatest systemic risk? Which are the most interconnected, and how exactly does a shock propagate within this network? 
+							These are all questions that I seek to answer in my Master's Thesis. It determines systemic risk by empirically measuring the CoVaR of the 36 largest European banks. 
+							The CoVaR represents the loss that an institution suffers when the entire system is under stress. 
+							To measure this, publicly available institution-specific and macroeconomic time series are used as part of quantile regressions with simultaneous variable selection. 
+							By determining the degree of influence of other institutions on the CoVaR of a target institution, it is possible to rank institutions by risk originator and risk taker. 
+							In addition, the effects between each pair of individual institutions can be identified, allowing the entire network to be visualised.</p>
+		
+						<br>
+						<p>This page will tell the story around the data, explain intuitions behind the examination and interpret the results.
+							<br><strong style="font-weight: 800;">directly jump into the corresponding R code</strong>, you can chose between one of the following parts of the project:</br></p>
+
+						<ul class="buttons stacked">
+							<li><a href="Banking_Data_Preperation.html" class="button fit scrolly">Data Preperation</a></li>
+							<li><a href="Banking_Calculations.html" class="button fit scrolly">Calculations</a></li>
+							<li><a href="Banking_Plots.html" class="button fit scrolly">Plots</a></li>
+						</ul>
+
+						<br>
+						<a href="Banking_PDF.html">Link to Full Version of the Paper (German)</a>
+
+					</header>
+
+					<!-- One -->
+						<section class="wrapper style4 container" color="blue">
+
+							<!-- Content -->
+							<section class="wrapper style3 container special">
+
+							<h2><strong>Introduction</strong></h2>
+
+							<p>The method used is based on the method of <a href="https://www.sciencedirect.com/science/article/pii/S0304407616300161?casa_token=APIj6Wo0kDAAAAAA:PaGd8Vtstkkp3yFWqXQTTlPDXh0XR5XG8vMzGPf6k5whJBmeX_wyiY_hibKtGEM9p3Tm0kg9">Härdle et al. (2016)</a> with some minor differences.
+								Only the results of the network analysis are presented on this page (for further details see the PDF of the master thesis above).</p>
+
+								The regressions are calculated at the 5% quantile of the return distribution. 
+								This estimates the loss in capital market returns that will not be exceeded with a 95% probability.
+								<br>
+								<br>
+							<p>The figure below shows an example of the capital market returns, the VaR and the CoVaR of Deutsche Bank over the course of the entire sample. 
+								It can be clearly seen how the CoVaR rises (the risk rises, the returns fall) sharply at the peak of the global financial crisis, 
+								and the collapse of the American investment bank Lehman Brothers, towards the end of 2008. 
+								A second peak can be identified around 2012, which can be placed in the course of the European sovereign debt crisis. 
+								At this time, the long-term yields of many European government bonds rose sharply, reflecting creditors' doubts about their creditworthiness.
+							</p>
+
+
+							<p style = "margin:0;">Kapitalmarktrenditen, VaR und CoVar Deutsche Bank:</p>
+							<a{text-decoration:none;}><img src="images/Banking/Kapitalmarktrenditen, VaR und CoVar Deutsche Bank.svg" height="auto" width="50%"/></a>
+
+							
+								
+							<div class="content">
+
+														<!-- Three -->
+
+							<section class="wrapper style3 container special">
+
+							<header class="major">
+								<h2><strong>The overall Networt over time</strong></h2>
+							</header>
+
+							<p>Looking at the Financial System as a whole, we can assess the total connectedness of the system as well as the average lamdba value.
+								A rising lambda means that a bank has more relevant connections compared to the previous period. 
+								A rising average lambda therefore stands for more relevant connections in the banking system and a higher systemic risk.
+								Thus the system as a whole reacts similar as the previous individual image of Deutsche Bank:
+								The total connectedness increases sharply during the global financial crisis and reaches its peak at the end of 2009.
+								By the end of the crisis, total interconnectedness and the average lambda both decrease slowly but steadily.
+								While the connectedness decreases to its pre-crisis level, the average lamda remains above the level of the crisis.
+							</p>
+
+							<p style = "margin:0;">Total Connectedness & Average-Lambda in the European Banking System:</p>
+							<a{text-decoration:none;}><img src="images/Banking/Gesamtvernetzung & Lambda.svg" height="auto" width="50%"/></a>
+							<br>
+							<br>	
+							<h2><strong>Examination by Countries</strong></h2>
+
+							<p>The next figure shows the outgoing risk spillovers by country groups.
+								The plotted graphs of the country groups have a similar structure to the previous graph of the overall network.
+								This means that the previous explanations are also applicable here:
+								there was an increased incoming risk in the global financial crisis, which increased further with the onset of the European sovereign debt crisis and was not able to fall back to pre-crisis levels in the following years either, but fluctuated at individual levels for different country groups. 
+								The two groups DE/AUT and UK were initially more affected than others. 
+								While it is possible to make a judgement about outgoing relationships without internal knowledge, it is difficult to assess incoming effects without internal knowledge. 
+								By knowing the bank's business focus or the country risks to which the banks in each country group are exposed, it is possible to draw conclusions about their risk situation and, accordingly, the risk they pose to others.
+							</p>	
+
+							<p style = "margin:0;">Incoming Risk-Spillover-Effects per Country-Group:</p>
+							<a{text-decoration:none}; class{background: none}="image featured"><img src="images/Banking/Einkommende Effekte nach Ländergrupppe.svg"  width="60%" height="auto" /></a>
+
+							<br>
+							<br>
+
+							<p>The next figure shows the outgoing risk spillovers by country groups.
+								No group of countries can be identified as having increased risk exposure during the global financial crisis. 
+								All plotted curves are close together at the beginning of the examination period.
+								It can therefore be said that all country groups were similarly affected by the crisis and that none of them passed on the negative spillover effects from American banks particularly strong to banks of other European country groups.
+								<br>
+								<br>
+								From 2009, at the beginning of the sovereign debt crisis, the outgoing effects increase slightly for all groups. 
+								However, the FR/BE/NL group stands out with three higher peaks. 
+								This can be explained by the bailout of the Belgian bank Dexia, which suffered heavy losses first in the global financial crisis and then in the European sovereign debt crisis.
+								Looking at the European sovereign debt crisis and the following years, an increase in the outgoing effects of the IT/GR country group can be observed from mid-2011, which remains at a high level until the end of the sample. 
+								A similar trend, albeit to a lesser extent, can also be observed for the SP/POR group. 
+								This shows that market participants were significantly more concerned about the state of Italy than the state of Spain. 
+								Negative spillover effects resulting from Brexit can also be observed from mid-2015 and therefore in advance of the referendum in mid-2016.</br>
+							</p>	
+
+							<p style = "margin:0;">Outgoing Effects:</p>
+							<a{text-decoration:none;} class{background: none} ="image featured" ><img src="images/Banking/Ausgehende Effekte nach Ländergrupppe.svg" width="60%" height="auto"  /></a>
+		
+							<br>
+							<br>
+
+							<p>
+							The big difference between the outgoing spillovers of the European periphery and those of the European core countries is clearly visible in the following plot. 
+							Here, the FR/BE/NL, DE/AUT and SKAND groups are aggregated to form the Core Europe graph and the SP/POR and IT/GR groups are aggregated to form the Periphery graph. 
+							Institutions in the UK group are excluded from this analysis. 
+							After peaking in 2010, the impact of institutions in Core Europe shows a downward trend, while the impact of institutions in the periphery shows an upward trend. 
+							By the end of 2012, outflows from the periphery exceed those from core Europe, and the two graphs move further apart. 
+							The trends seen in the previous figure are now visible more clearly.
+							</p>
+
+							<p style = "margin:0;">Outgoing Effects Peripherial vs. Core-Europe:</p>
+							<a{text-decoration:none;}><img src="images/Banking/Ausgehende Effekte Peripherie vs. Kerneuropa.svg" height="auto" width="60%"/></a>
+
+
+							<header class="major">
+
+							<h2 style="margin-top: 2em;"><strong>Connectedness of Individual Institutions</strong></h2>
+							</header>
+
+							<p>
+							The next step is to analyse the network at the level of individual institutions. 
+							This is done by analysing the coefficients contained in the network matrices, 
+							which allow all the relevant relationships between financial institutions to be represented.
+							<br>
+							<br>
+							The following plot show examples of all relevant individual effects at three significant points in the sample as network plots. 
+							The upper left plot shows the system on 15 September 2008, which corresponds to the day of the Lehmann Brothers bankruptcy, 
+							the upper right on 10 June 2011, when concerns about the state of Spain and Italy increased, and the lower left on 20 May 2016, 
+							just before the Brexit referendum, at a time when uncertainty about the outcome was still high. 
+							Patterns and overall correlations are easy to see in these network plots. 
+							However, the high degree of interconnectedness across the financial sector, the large number of incoming and outgoing effects shown, 
+							and the lack of information on the exact size of the effects make them unsuitable for detailed analysis.
+							<br>
+							<br>
+							
+							</p>
+
+							<p style = "margin:0;">Full Networks at Three Points in Time:</p>
+							<br>
+							<table>
+								<tr><td><img src="images/Banking/Netzwerkplot zum 15. September 2008.svg" height="auto" width="70%"/></td><td><img src="images/Banking/Netzwerkplot zum 10. Juni 2011.svg" height="auto" width="70%"/></td></tr>
+								<tr><td><img src="images/Banking/Netzwerkplot zum 20. Mai 2016.svg" height="auto" width="70%"/></td><td></td></tr>
+							</table>
+
+							<p>
+								To get a better understanding of the network, we can count the number of links each institution receives and emits. 
+								This might be relevant, as Banks can not only be systemically relevant through few large links but also a large amount of small links.
+								<br>
+							</p>
+
+							<p style = "margin:0;">Number of Incoming and Outgoing Effects by Institution and Country Group</p>
+							<a{text-decoration:none;}><img src="images/Banking/Number of Links.png" height="auto" width="60%"/></a>
+
+							<br>
+							<br>
+
+							<p>
+								To focus on the strength of the links in each network plot, a threshold is applied to the visualisation of the connections. 
+								In the following figure, only effects that are greater than the average effect are shown in order to better identify the main effects. 
+								All other effects are reduced to zero in this step.
+							</p>
+
+							
+							<p style = "margin:0;">Reduced Networks at Three Points in Time:</p>
+							<br>
+							<table>
+								<tr><td><img src="images/Banking/Reduzierter Netzwerkplot zum 15. September 2008.svg" height="auto" width="70%"/></td><td><img src="images/Banking/Reduzierter Netzwerkplot zum 10. Juni 2011.svg" height="auto" width="70%"/></td></tr>
+								<tr><td><img src="images/Banking/Reduzierter Netzwerkplot zum 20. Mai 2016.svg" height="auto" width="70%"/></td><td></td></tr>
+							</table>
+
+							<p>
+							As mentioned above, network plots are static snapshots at a fixed point in time, which may represent connections other than the usual ones. 
+							In addition, strong effects may be offset by a large number of weaker effects that are not visible on the reduced plots. 
+							For this reason, the individual institutions should be finally compared by summing up all incoming and outgoing effects over all time windows.
+							<br>
+							<br>
+							The following two tables show the pure sum of incoming and outgoing effects: 
+							</p>
+
+							<p style = "margin:0;">Sum of <strong style="font-weight: 800;">Incoming</strong> for Individual Institutions:</p>
+							<a{text-decoration:none;}><img src="images/Banking/Top 10 Receivers.svg" height="auto" width="70%"/></a>
+
+						
+							<p style = "margin:0;">Sum of <strong style="font-weight: 800;">Outgoing</strong> for Individual Institutions:</p>
+							<a{text-decoration:none;}><img src="images/Banking/Top 10 Emitters.svg" height="auto" width="70%"/></a>
+
+							
+							<header class="major">
+
+								<h2 style="margin-top: 2em;"><strong>Indices of Systemic Risk Receivers and Emitters</strong></h2>
+								</header>
+
+								<p>	
+								If an institution is only connected to small institutions, its systemic relevance is reduced, as the negative spillovers would still be manageable in relation to the overall size of the market. On the other hand, if it is increasingly connected to large institutions, its systemic relevance increases, as spillovers can now also drag the large bank, and thus more and more of the market, into a negative spiral. For this reason, in addition to the size of spillovers, both indices also take into account the size of institution i and the size of the institutions connected to it, thus combining the notions of "too big to fail" and "too connected to fail" into one measure.
+								<br>
+								<br>
+								The formula used to calculate the following tables, thus, is the follwing:
+								</p>
+
+								<a{text-decoration:none;}><img src="images/Banking/Formula SRE_SRR.png" height="auto" width="25%"/></a>
+								<br>
+								<br>
+
+							<p style = "margin:0;">Individual <strong style="font-weight: 800;">Receivers</strong> Weighted by Size:</p>
+							<a{text-decoration:none;}><img src="images/Banking/Top 10 Receivers weighted by size.svg" height="auto" width="70%"/></a>
+
+							
+							<p style = "margin:0;">Individual <strong style="font-weight: 800;">Emitters</strong> Weighted by Size:</p>
+							<a{text-decoration:none;}><img src="images/Banking/Top 10 Emitters weighted by size.svg" height="auto" width="70%"/></a>
+
+							<p>
+								As a final step, the obtained "Indices of Systemic Risk Receivers and Emitters" can be compared to measures of systemic risk which employ different methodologies.
+
+								<br>
+								<br>
+
+								</p>
+
+
+							<p style = "margin:0;">Comparison With Other Measures of Systemic Risk:</p>
+							<a{text-decoration:none;}><img src="images/Banking/Comparison other Risk Measures.svg" height="auto" width="70%"/></a>
+							<br>
+							<br>
+							<h2 style="margin-top: 2em;"><strong>Short Summary:</strong></h2>
+							The results of the network analysis can therefore be summarised as follows:
+							<br>
+							<br>
+							<ol style="text-align: left;">
+								<li>The degree of interconnectedness and, in particular, systemic risk in the European banking system remain comparatively high due to persistent risks even after the global financial crisis.</li>
+								<li>No single institution is responsible for a very high proportion of spillovers. Looking at groups of institutions, there is evidence of increased outward spillovers from the European periphery after the global financial crisis.</li>
+								<li>National links between financial institutions are particularly important due to their number and strength. However, spillovers from other countries are sometimes above-average for countries other than the main counterparties.</li>
+								<li>The banking system is characterised by a large number of small and medium-sized spillovers. "Smaller" institutions can become systemically important through a large number of spillovers.</li>
+							</ol>
+
+				</article>
+									
+			<!-- Footer -->
+				<footer id="footer">
+
+					<!-- <ul class="icons">
+						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+					</ul> -->
+
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

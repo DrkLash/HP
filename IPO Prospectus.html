@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>No Sidebar - Twenty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+	</head>
+	<body class="no-sidebar is-preload">
+
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Dirk Laschat <span style="margin-left: 0.5cm;">Research and Data Science Portfolio</span></a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="current"><a href="index.html">Landing Page</a></li>
+							<!-- <li class="submenu">
+								<a href="#">Layouts</a>
+								<ul>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li class="submenu">
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Dolore Sed</a></li>
+											<li><a href="#">Consequat</a></li>
+											<li><a href="#">Lorem Magna</a></li>
+											<li><a href="#">Sed Magna</a></li>
+											<li><a href="#">Ipsum Nisl</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button primary">Sign Up</a></li> -->
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<h2><strong>IPO-Prospectus Sentiment Analysis</strong></h2>
+						<p style="max-width: 90%; text-align: center; margin: auto">
+							The IPO (initial public offering) prospectus,
+							represents the most important document issued during the process of going public. 
+							It can be regarded as a kind of sales promotion towards potential investors. 
+							It is key for companies entering capital markets to overcome information asymmetries as far as possible to achieve the best pricing of their stock and collect as much capital as possible. 
+							However, it is important to note that in the majority of countries the document is filed with the local regulation authority and must meet certain guidelines. 
+							Thus, information disclosed in the IPO prospectus must be true, impartial and complete. 
+							On this way the document may reduce uncertainty and information asymmetries between issuer and investors.
+						</p>
+						<br>
+
+						<p style="max-width: 90%; text-align: center; margin: auto">
+							With COVID-19 disrupting societies as well as economies, our world entered a state of a new normal in many parts of our lives and uncertainty persists about when we can return to our familiar habits. 
+							There is the possibility that COVID also created a new normal of language used in IPO prospectuses. 
+							An intuitive assumption is, that the economic downturn created by the pandemic results in a more negative tone (sentiment) of prospectus documents and that there are more words conveying uncertainty and constraints. 
+							However, COVID could also rather replace former uncertainty instead of creating an additional one.</p>
+						<br>
+
+						<p>This page will tell the story around the data, explain intuitions behind the examination and interpret the results.
+							<br><strong style="font-weight: 800;">To directly jump into the Python code</strong>, you can chose between one of the following parts of the project:</br></p>
+
+						<ul class="buttons stacked">
+							<li><a href="IPO Prospectus_Mining_Python.html" class="button fit scrolly">Collection of Prospectus Files</a></li>
+							<li><a href="IPO_Prospectus_NLP_Part_Risk_Factors.html" class="button fit scrolly">Natural Language Processing</a></li>
+						</ul>
+						<p> The corresponding working paper written for one of my Phd. courses, can be found <a href="PDFs/IPO Prospectus Text Mining_Dirk Laschat.pdf" target="_blank">here</a>.</p>
+
+							
+					</header>
+
+					<!-- One -->
+						<section class="wrapper style4 container" color="blue">
+
+							<!-- Content -->
+							<section class="wrapper style3 container special">
+
+
+							<p>First all relevant IPOs in the period between 2017 and 2022 are identified through Thompson Reuter's Refinitiv Eikon 'Screener' app.
+								Since there is no single database for IPO prospectuses, I scraped the EU, UK databases and 
+								downloaded prospectuses manually for IPOs on selected Asian exchanges as well as the Australian ASX during the defined time period. 
+								On this way 221 IPOs from 36 countries can be identified.  
+							</p>
+							<style>
+								.zoom {
+									transition: transform .5s; /* Animation */
+									max-width: 100px; /* This will control the size of the image */
+									margin: 0 auto;
+								}
+							
+								.zoom:hover {
+									transform: scale(4); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+								}
+							</style>
+							
+							<h3 style="margin-bottom: 0;">Eikon Screener App</h3>
+							<img class="zoom" src="images/IPO Sentiment/EIKON_Screenshot.png" alt="Description of the image">
+
+
+
+
+							<p>Afterwards the PDFs are loaded into Python and the stored text is cleaned, split into sentences and the overall number of words are counted.
+								As a first step Topic models and word clouds can be build, to get an overview of the most common words and topics in the prospectuses. 
+							</p>
+
+							<div style="margin:0;">
+								<h3 style="margin-bottom: 0;">Textdata gathered in Python</h3>
+								<img src="images/IPO Sentiment/Textdata_Screenshot.png" alt="Description of the image", width="70%" height="auto" style="margin-bottom: 50px;">
+							</div>
+
+
+							<p>Latent Dirichlet allocation (LDA) models are frequently used to cluster the text data into topics. These algorithms, however, do need 
+								predefined parameters choosen by the user, which are the optimal number of topics and the learning decay.
+								To add statistical support the Log-Likelihood Scores for a combination of a hand full of intuitive parameters can be calculated for both pre-COVID
+								and COVID-period. The Log-Likelihood measures show how probable new data is for the model. Thus when there is a visible maximum in the plot, adding topics
+								might not add more information. Literature however shows that a high likelihood does not necessarily yield semantically coherent topics. Therefore
+								topic models with parameters around the optimum can also be evaluated manually. 
+							</p>
+
+							<section class="wrapper style3 container special" style="padding:0; margin:0;">
+								<div class="row" style="padding:0; margin:50px;">
+									<div class="col-6 col-12-narrower" style="padding:0; padding-right: 20px;">
+										<section style="padding:0; margin:0;">
+											<p style="margin:0;">Pre-COVID:</p>
+											<a style="text-decoration:none; background: none;"><img src="images/IPO Sentiment/Optimal LDA Model2.png" width="100%" height="auto" /></a>
+										</section>
+									</div>
+									<div class="col-6 col-12-narrower" style="padding:0; padding-left: 20px;">
+										<section style="padding:0; margin:0;">
+											<p style="margin:0;">COVID:</p>
+											<a style="text-decoration:none; background: none;"><img src="images/IPO Sentiment/Optimal LDA Model.png" width="100%" height="auto" /></a>
+										</section>
+									</div>
+								</div>
+							</section>
+
+							<p>Especially regarding the COVID-period the Log-Likelihood Scores suggest a number of 4 topics. 
+								However manual evaluation of created topoic models shows better interpretability for 5 topics.
+								The following two tables show the top 10 words for each topic in the pre-COVID and COVID period.
+							</p>
+							
+							
+							<div style="margin:0; margin-bottom: 50px;">
+								<h3 style="margin-bottom: 0;">Topics created by LDA-Model for Prospectuses in the Pre-Covid period:</h3>
+								<a style="text-decoration:none;"><img src="images/IPO Sentiment/Topic Model Pre COVID.svg" height="auto" width="70%"/></a>
+							</div>
+							
+							<div style="margin:0;">
+								<h3 style="margin-bottom: 0;">Topics created by LDA-Model for Prospectuses in the Covid period:</h3>
+								<a style="text-decoration:none;"><img src="images/IPO Sentiment/Topic Model COVID.svg" height="auto" width="70%"/></a>
+							</div>
+							<br>
+							<p>Regarding the pre-period, it is hard to label the topics the model yields. 
+								For the COVID-period however, topics seem to form more clearly. 
+								Especially Topic 1 seems to gather words related to the pandemic, because the stems "disrupt" and "pandem" are represented here. 
+								Supply chain related stems like "suppli", "facil", "capac" and "raw" are present just as financial terms like "bank", "credit", "loan" and "fiscal". 
+								Additionally, stakeholders of the firm seem to be addressed many times in this "pandemic" topic 
+								(see high ranking of the stems "custom", "bank", "partner", "manufactur", "supplier"). Likewise, the other topics can be labelled: 
+								E.g. topic 3 builds around medical topics which makes sense regarding the high number of biotech IPOs in 2020 and 2021 and topic 4 lists many words from the field of construction or buildings.
+							</p>
+							
+							<p>
+								To identify positive, negative, uncertain and contraining words, Loughran & McDonald's Master Dictionary for financial language analysis can be used.
+								To identify COVID-specific words the “COVID-19 terminology” list by the Interactive Terminology for Europe is used.
+								After matching the words from the prospectuses with the lists, word clouds can be created. The larger the word, the more often it appears in the prospectuses.
+								The following one was created from all negative words in prospectuses published in the COVID-period.
+							</p>
+								
+								<h3 style="margin-bottom: 0;">Word Cloud</h3>
+								<a{text-decoration:none;}><img src="images/IPO Sentiment/wordcloud.png" height="auto" width="70%"/></a>
+
+								<section class="wrapper style3 container special">
+			
+								<h2><strong>Sentiment Analysis</strong></h2>
+
+
+							<p>
+								Now, ratios for the share of positive, negative, uncertain and constraining and COVID-related words in the prospectuses can be calculated.
+							</p>
+
+							<p>
+								For example:
+								\[
+								Uncertainty\ Ratio = \dfrac{uncertain \ words}{all \ words}
+								\]
+							</p>
+
+							<p>
+								Addtionally a Sentiment Score can be calculated by the following formula:
+							</p>
+
+							<p>
+								\[
+								Sentiment Ratio = \dfrac{positive \ words \ - \ negative \ words}{all \ words}
+								\]
+							</p>
+
+							<p>
+								Beyond using the Loughran & McDonald dictionary approach, the sentiment of the prospectuses can also be analyzed using the FinBERT model.
+								The FinBERT is based on the BERT model and pre-trained on financial language. 
+								BERT itself stands for Bidirectional Encoder Representations from Transformers, and is a powerful natural language processing (NLP) model 
+								developed by Google in 2018 and uses a deep neural network architecture.
+								To construct sentiment measures via FinBERT, the sentences are tokenized and the sentiment of each sentence is predicted by the model. On this way the sentiment might be more 
+								consistent as whole sentences are analyzed and words can be interpreted in the context of other words.
+							</p>
+
+							<p>
+								To identify the impact of the COVID-pandemic on the sentiment of the prospectuses, 
+								the constraining and uncertainty ratios as well as both sentiment scores for the dictionary and FinBERT approach can be compared between the pre-COVID and COVID-period.
+
+							</p>
+
+							<p>
+								From the plot below, we can see that the right plots for the COVID period show that there are more constraining and uncertain words used and sentiment is also slightly lower. 
+								This can be seen by the fact that in the scatterplots more datapoints are located in the upper part of the plot and distributions are more right-skewed.
+							</p>
+
+							<div class="content">
+
+														<!-- Three -->
+
+
+
+
+								<h3 style="margin-bottom: 0;">Wordcount Describtive Statistics</h3>
+								<a{text-decoration:none;}><img src="images/IPO Sentiment/Wordcount describtives.png" height="auto" width="100%" style="margin-bottom: 50px;" /></a>
+
+								
+								
+							<p>
+								To answer the question, whether uncertain and constraining words are used alongside or rather substituted for COVID-related words, 
+								we can plot both ratios for each prospectus in a regressionplot. Even though the slope is not very steep, a positive relationship can be seen for uncertainty words whereas
+								a negative relationship can be seen for constraining words. Thus constraining words are rather substituted by COVID-related words, whereas uncertain words are used alongside.
+							</p>
+
+							<h3 style="margin-bottom: 0;">Uncertainty- & Constraining Word Ratios vs. COVID-related words</h3>
+								<a{text-decoration:none;}><img src="images/IPO Sentiment/Word Count Regressions.png" height="auto" width="60%" style="margin-bottom: 50px;" /></a>
+
+								<p>
+									In a next step, the dictionary and FInBERT approach for measuring the sentiment can be compared.
+									To do so, their sentiment scores are plotted against the uncertainty, constraining and COVID-related word ratios in two plots (one for the LDM dictionary
+									approach and one for the FinBERT approach).
+									If both sentiment scores measure these "text moods" equally, the slopes between the next two plots should be very similar,
+									but there are visible differences especially regarding uncertain words.
+									However, the regressionplot's slopes need to be treated with caution, as the variance is very high and 
+									the slope might also be influenced by outliers.
+									What can be said with high certainty, is that both sentiment measures are consistent in the sense that they correlate very well with each other (lower right corner in both plots).
+									This means, both measures evaluate the mood of a text very similarly.
+								</p>
+	
+								<h3 style="margin-bottom: 0;">Loughran & McDonald dictionary approach compared to Word Ratios</h3>
+
+								<a{text-decoration:none;}><img src="images/IPO Sentiment/LMD regression.png" height="auto" width="100%"/></a>
+
+								<h3 style="margin-bottom: 0;">FinBERT approach compared to Word Ratios</h3>
+								<a{text-decoration:none;}><img src="images/IPO Sentiment/Finbert regression.png" height="auto" width="100%"/></a>
+
+
+
+
+
+
+
+				</article>
+									
+			<!-- Footer -->
+				<footer id="footer">
+
+					<!-- <ul class="icons">
+						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+					</ul> -->
+
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

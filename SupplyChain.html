@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<!--
+	Twenty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>No Sidebar - Twenty by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="no-sidebar is-preload">
+
+		<div id="page-wrapper">
+
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">Dirk Laschat <span style="margin-left: 0.5cm;">Research and Data Science Portfolio</span></a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="current"><a href="index.html">Landing Page</a></li>
+							<!-- <li class="submenu">
+								<a href="#">Layouts</a>
+								<ul>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li class="submenu">
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Dolore Sed</a></li>
+											<li><a href="#">Consequat</a></li>
+											<li><a href="#">Lorem Magna</a></li>
+											<li><a href="#">Sed Magna</a></li>
+											<li><a href="#">Ipsum Nisl</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button primary">Sign Up</a></li> -->
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<article id="main">
+
+					<header class="special container">
+						<h2><strong>DERIVING SUPPLY CHAIN RISK FROM STOCK MARKET CORRELATIONS</strong></h2>
+						<p>Supply chain failures and supply shortages have always been a matter of high risk. 
+							Especially when considering the scope, velocity and interconnectedness of modern supply chains, small disturbances can cause immense damage. 
+							However, the empirical side of supply chain vulnerability, and especially its quantification, remains underrepresented.
+							To address this, it can be assessed if the network risk of the semiconductor supply chain can be proxied by information included in the pricing of the associated firms' equities. 
+							Using the principles of the Diebold and Yilmaz connectedness approach, a method used to quantify systemic risk in the banking industry, a systemic risk measurement of an individual supply chain on different levels can be established. 
+							Looking at specific firms, vulnerable nodes can be identified and, thus, the risk exposure originated by a certain region or supply chain level through might be measureable by aggregation.
+							</p>
+							<br>
+
+						<p>This page will tell the story around the data, explain intuitions behind the examination and interpret the results.
+							<br><strong style="font-weight: 800;">To directly jump into the R code</strong>, you can chose between one of the following parts of the project:</br></p>
+
+						<br>
+
+						<ul class="buttons stacked">
+							<li><a href="Semi_Supply_Chain_Risk.html" class="button fit scrolly">Network Calculations</a></li>
+							<li><a href="Semi_Supply_Chain_Risk---Connectedness-Measures.html" class="button fit scrolly">Connectedness Measures</a></li>
+						</ul>
+						<p>A presentation I held at the German Conference WK-ORG by Leuphana Universität Lüneburg can be found 
+							here.</p>
+
+
+							<a href="PDFs/WK ORG Präsentation.pdf" target="_blank">Link to Short Presentation (German)</a>
+					</header>
+
+					<!-- One -->
+						<section class="wrapper style4 container" color="blue">
+
+							<!-- Content -->
+							<section class="wrapper style3 container special">
+
+							<h2><strong>Introduction</strong></h2>
+							<p>First it might be helpful to clearify why the semiconductor supply chain is a good case to study systemic risk in supply chains.
+								<br>
+								<ul style="text-align: left;">
+									<li>It primarily consists of large, listed companies, ensuring data availability and representation of key players.</li>
+									<li>Companies in the semiconductor supply chain can be easily categorized, which is useful as labor-intensive processes often reduce the relevance of raw materials.</li>
+									<li>This supply chain frequently experiences major disruptions, making it an ideal case for evaluating how different levels of a supply chain interact during crises.</li>
+									<li>The aim is to understand where increases in interconnectedness originate during a crisis. There's a widespread belief that Western companies face greater risks from Asia due to significant processing stages occurring there. The question is whether Asian companies truly create more ripple effects, or if this belief stems from the sheer number of Asian companies involved in most supply chains.</li>
+									<li>Lastly, foundries like the market leader Taiwan Semiconductor Manufacturing Company (TSMC) are often cited as a bottleneck in global chip production. It's interesting to see if the role of such pivotal companies like TSMC is reflected in the analysis of volatility spillover effects.</li>
+								</ul>								
+								</p>
+								
+							<p>As we don't have access to specific details about company contracts or how much they are actually delivering, we can look at how the stock market values these companies. 
+								This gives us a glimpse into the future because it reflects the decisions of thousands of people who have insider information.
+							Addtionally, there is abundant evidence from literature that shows that capital market data and specifically stock market returns comprise information on a firm's supply-chain-specific disruptions.</p>
+								
+							<div class="content">
+
+														<!-- Three -->
+
+							<section class="wrapper style3 container special">
+
+							<header class="major">
+								<h2><strong>The Network Appraoch</strong></h2>
+							</header>
+
+							<p>It is common knowledge that systems with lots of connections can be risky, and this has been studied from many angles. 
+								As computers have gotten more powerful, researchers have started to use network theory to assess these risks. 
+								If something unexpected and major happens (like a “black swan” or “dragon king” event), a network approach can -already in advance- help identify the parts that matter most.
+								Thus companies might be able to prepare for such events and reduce the damage they cause, as the key parts could set off a chain reaction of negative effects.</p>
+								
+
+							<p> An approach which was already used to measure systemic risk in the financial system is the the Diebold and Yilmaz connectedness approach.
+								This method uses an econometric (vector autoreressive) model to measure how much the returns of one company are affected by the returns of another company.
+								As mentioned above, capital returns should be able to proxy parts of supply chain failures and supply shortages.
+								Thus the connectedness approach should be able to identify which firm emit most risk to the system and which firms are particularly vulnerable as they receive many spillovers.</p>
+								
+								As the employed model is very similar to the one by <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jae.2585">Demirer et al. (2018)</a>,
+								the model will be omitted here. And the focus will be on the results and their interpretation.
+								<strong> The main idea of the model is to measure how much of company i's future stock return volatility arises from shocks at company j.</strong> 
+								<br>	
+								<br>
+								The code (, which you can acess by the button at the top of this page) creates weekly connectedness matrices over a period from mid-2017 to early 2022.
+								Each matrix contains the spillover effect of each company to each other company in the supply chain.
+								To only evaluate supply chain relevant spillovers the links between firms without relevant supply chain connection are set to zero.
+								Thus, networks like the ones displayed in the following figure can be created for each week in the examination period.
+
+								In this figure it is easy to see that the number of connections increases during the COVID pandemic and thus the time of relevant supply chain disruptions.
+								Addtionally in the upper right plot, a higher international connectedness can be seen by the fact, that companies of different countries get closer to each other than before.
+							</p>
+
+							<p style = "margin:0;">Network of Semiconductor Supply-Chain Over Time:</p>
+							<a{text-decoration:none;><img src="images/Supply Chain/Semi Networks.svg" height="auto" width="90%"/></a>
+							<br>
+							<br>
+							<h2><strong>Aggregating the Measured Spillovers</strong></h2>
+
+							<h3 style="margin-top: 2em;"><strong>The Systemwide Connectedness</strong></h3>
+
+							<p>In a first step, we can gain a measure of systemwide (or total) connectednes by calculating the average spillover effect of the system at each point of time.
+								Afterwards, this overall measure can be broken down into the connectedness of companies within one region (e.g. US, Europe, Asia) and the connectedness between regions.
+								Additionally, ferrosilicon prices as major commodity used in the production of semiconductors are included in the model.
+								Thus exposures of firms towards changes of this price can be examined.
+
+								The follwoing two figures display these measures. Unsurprisingly, a spike at the beginning of the COVID pandemic can be seen and be attributed towards between country connectedness.
+								Additonally, the influence of the ferrosilicon price can be seen to be rather low, as its average effect on firms is significantly lower than the average effect of firms on each other.
+								However at the end of the period it rises quite quickly, which shows that price changes of silicon may become relevant for firms in the system. Thus, we need to keep an eye on these raw material dynamics.
+							</p>
+
+							<p style = "margin:0;">TAC of a model without raw material vs RMAC in the full model</p>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Systemwide & Raw Electronics.svg" height="auto" width="70%"/></a>
+								<br>
+								<br>
+							<p style = "margin:0;">TAC, TAC<sup>CR</sup> and TAC<sup>WR</sup> for the overall model</p>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Systemwide Connectedness Electronics.svg" height="auto" width="70%"/></a>
+
+
+							<h3 style="margin-top: 2em;"><strong>The Connectedness between Regions</strong></h3>
+
+
+							<p>In a next step, it is possible to aggregate the individual firm effects on regional basis. On this way, for example, the question whether Asian companies emit more risk to the system at a certain point in time.
+								In addition to assessing all spillover effects in the upper plots of the follwing figure, the lower plots only aggregates the highest 10% of spillover effects.
+								Those highest 10% of risk spillovers are most likely to reflect severe supply chain disruptions. 
+								Comparing both approaches, it can be seen that regarding all data, the average spillover effect emitted by Asian companies is often higher and European and US companies receive on average more spillovers.
+								However, when only looking at the highest 10% of spillovers, the picture changes. There is no clear pattern visible, each region emits the highest spillover at different points in time and especially at the 
+								end of the observation period, Asian companies receive the highest spillovers. 
+							</p>
+							<br>
+							<p style = "margin:0;">Risk Spillovers on Continental Level and Over Time:</p>
+							<br>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Continental over time Electronics.svg" height="auto" width="80%"/></a>
+							<br>
+							<br>
+							<h3 style="margin-top: 2em;"><strong>The Connectedness Between Different Levels of The Supply-Chain</strong></h3>
+
+							<p>The same approach can be applied by aggregating on the supply chain level.
+								Here, one can distinguish between outsourced semiconductor assembly and test (OSAT), intellectual property core (IP), semiconductor manufacturing equipment (SME), 
+								fabless manufacturing, integrated device manufacturer (IDM), pure play foundries, and silicon processing firms.
+								Again, especially regarding the highest spillover effects there evaluating the effects at different points in time, does show that there are different supply chain levels which emit and receive the highest risk spillovers.</p>
+
+
+							<p style = "margin:0;">Risk Spillovers on Supply-Chain-Level and Over Time:</p>
+							<br>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Supply Chain over time Electronics.svg" alt="Distribution within Capital Markets" height="auto" width="80%"/></a>
+							<br>
+							<br>
+							<p> Dropping the time dimension in this analysis, the following tables repeat the previous analysis. Now, we assess which region or supply chain level emits or receives the highest spillovers over the whole sample period.
+								As the COVID pandemic is the most relevant event in the observation period, the effects during this timeframe are aggregated separately and indicated in brackets, to assess whether patterns are different during this time.
+							</p>
+
+				
+							<p> Results show that over the entire sample, North American (NA) companies emitted most spillovers, while during the pandemic Asian companies did so. 
+								Regarding incoming spillovers, Asian companies received most spillovers in both cases. 
+								Regarding the direction of spillovers, outgoing effects from North America (NA) to Asia were strongest, while during the pandemic European firms indeed emitted most spillovers toward Asian firms.
+							</p>			
+
+							<p style = "margin:0;">Risk Spillovers on Continental Level Overall and During the COVID Pandemic:</p>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Regional Table.png" alt="Distribution within Capital Markets" height="auto" width="50%"/></a>
+							<br>
+							<br>
+							<p>On the supply chain level, the quantification of spillovers in the following table shows that foundries emitted the most spillovers during the entire sampling period. 
+							Regarding the COVID-19 period, foundries and OSATs emitted the same high amount. Regarding incoming effects, SMEs received the most effects for the entire sample, while OSATs received the most effects during the COVID-19 period. 
+							The direction of spillovers reveals a strong connection between foundries and OSATs. 
+							Outgoing links from foundries to OSATs as well as the other way around had the strongest effects for both the entire and the COVID-19 period. 
+							The same applied to the connection between silicon processing firms and SMEs. Additionally, silicon processing firms also received a considerable number of spillovers from foundries. 
+							The fact that the strongest connections were often observed for both periods shows that those connections are permanent and not only a result of the crisis.
+							</p>
+
+							<p style = "margin:0;">Risk Spillovers on Supply-Chain-Level Overall and During the COVID Pandemic:</p>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Chain Table.png" alt="Distribution within Capital Markets" height="auto" width="60%"/></a>
+							<br>
+							<br>
+
+							<h2><strong>The Largest Individual Risk Emitters and Receivers</strong></h2>
+
+							
+							<p>The following table shows the individual companies with the highest incoming spillovers from either Asia, North America (NA)  or Europe. 
+								SMEs and fabless producers were particularly exposed to incoming spillovers from Asia, while foundries were more exposed to North America (NA). 
+								Here, TSMC stands out, as it had the most incoming spillovers as well as a bigger gap between the following firms in the ranking. 
+								Exposures toward Europe were substantially smaller and showed a more mixed pattern at the firms' supply chain level.
+							</p>
+
+							<p style = "margin:0;">Individual Firm Risk Exopsures Towards Regions:</p>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Individual to Region.png" width="65%" height="auto" /></a>
+							<br>
+							<br>
+
+							<p>Looking at individual average connectedness as a whole, the following two tables show the firms with the highest average outgoing and incoming spillover effects.
+								Notably, both rankings are very similar. 
+								Only a few exceptions exist where positions between both rankings differ largely. 
+								For example, regarding the top of the IACOUT ranking, only the IDM NXP and the foundries TSMC and UMC rank substantially higher than in the IACIN rankings. 
+								Conversely, JCET, the IACIN leader, and a group of silicon processing firms rank significantly higher in the IACIN than the IACOUT. 
+								Interestingly, size seems to not be the driving factor for supply chain risk; both rankings' leading companies are not the largest ones, neither within the entire sample nor their supply chain level group. 
+
+							</p>
+
+							<p style = "margin:0;">Ranking of Individual Risk Emitters:</p>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Individual Out.png" width="65%" height="auto" /></a>
+							<br>
+							<br>
+							<p style = "margin:0;">Ranking of Individual Risk Receivers:</p>
+							<a{text-decoration:none;}><img src="images/Supply Chain/Individual IN.png" width="65%" height="auto" /></a>							
+							<br>
+							<br>
+
+							<p>The previous examination shows the total risk emitted or received for the entire sample period. 
+							However, some spillover effects between firms may be very large only at single points in time. 
+							Therefore, addtionally, the closest connections at any point in time can be examined by counting the occurrence of each company as an emitter or receiver in the top 1% of spillovers.
+							The follwoing table shows the results of this calculation. The number in brackets indicates the firm's position in the previous rankings of total risk emitted and received.
+							<br>
+							<br>
+							Interestingly, order and number of appearances within the top 1% of spillovers does differ to the previous examination. 
+							Strikingly, the two SMEs Screen Semiconductor and Tokyo Electron show a bigger gap when regarding incoming spillovers. 
+							Also, ferrosilicon as a raw material not only has the strongest durable impact in the overal risk emitter ranking but can emit very strong spillover at single points of time. 
+							This is particularly interesting since the average connectedness of ferrosilicon suggested it only minorly contributed to all spillovers of the system.
+							</p>
+
+							<p style = "margin:0;">Number of a Firm's Appearances in the Top 1% of Spillovers:</p>
+							<a{text-decoration:none;}><img src="images/Supply Chain/lolipop Semi.svg" width="90%" height="auto" /></a>
+
+							<br>
+							<br>
+							<br>
+							<br>
+							<h2><strong>Dicussion of Results</strong></h2>
+
+							<p>It makes sense that both foundries and SMEs had high risk exposures. 
+								Foundries, mainly located in Asia, need to expand their production capacities with the help of machinery from SMEs. 
+								Furthermore, Chinese firms lag behind in core technologies and have to rely on imported equipment to scale up production quality and quantity, despite China's push for a more self-reliant semiconductor industry. 
+								Their plans faced setbacks when, in late 2020, the U.S. government added the biggest Chinese foundry SMIC to the Entity List. 
+								This was due to SMIC's actions being contrary to the national security or foreign policy interests of the United States. 
+								As a result, their access to U.S. semiconductor equipment was restricted. 
+								Reports suggest that the US government even pressured the Dutch government to prevent ASML from selling their latest machines to China.
+								<br>
+								<br>
+								SMIC's high positions in the individual connectedness rankings can be explained by these facts. 
+								This is especially true when considering the extreme outgoing spillovers at a point in time. 
+								The OSAT Jiangsu Changjiang Electronics Technology (JCET) leads the incoming spillover ranking, but only ranks in the middle of the outgoing ranking. 
+								When looking at JCET in the network graphs, we can see the strong incoming effects from SMIC. Our measurement approach has already highlighted the strong connection between foundries and OSATs. 
+								These connections are inherent to the nature of their work. For example, proximity between both types of firms reduces various expenses, but it also increases dependence, especially for smaller OSATs. 
+								However, in recent years, foundries have been steadily pushing for internal packaging and testing solutions, which has increased uncertainty for OSATs. 
+								SMIC has been increasing its efforts to engage more heavily in packaging services to remain competitive and evade the U.S. sanctions. 
+								JCET and SMIC maintain a close business relationship, and SMIC's difficulties, along with their plan to adjust the company's business model, seem to be a main driver for JCET's high incoming spillover effects.
+								<br>
+								<br>
+								When looking at extreme spillovers at specific points in time, Screen Semiconductor and Tokyo Electron received significantly more spillovers than other companies in the sample.  
+								This is due to two main factors: firstly, both companies supply essential equipment to SMIC, and secondly, Tokyo Electron's CEO Toshiki Kawai has stated that his company will comply with U.S. regulations. 
+								Demand for semiconductor equipment has increased due to expansions in Taiwan and China's desire for self-reliance. 
+								The connectedness measures include both positive and negative volatility, suggesting that both aspects are likely to play a role. 
+								This is particularly true when considering that no SMEs from other countries received or emitted such high spillovers.
+								<br>
+								<br>								
+								Therefore, a closer examination of the historical events of the top-ranking companies in the semiconductor industry reveals that there are convincing reasons for their significant spillover effects.
+								This supports our model and ranking methodology.
+							</p>
+				</article>
+									
+			<!-- Footer -->
+				<footer id="footer">
+
+					<!-- <ul class="icons">
+						<li><a href="#" class="icon brands circle fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands circle fa-google-plus-g"><span class="label">Google+</span></a></li>
+						<li><a href="#" class="icon brands circle fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon brands circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+					</ul> -->
+
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
