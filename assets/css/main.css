@@ -1935,14 +1935,14 @@ input, select, textarea {
 		}
 			.icon.solid.python
 			{
-				background: url("/Homepage-DL.github.io/images/Icons/Python_whitesmoke.svg");
+				background: url("./Icons/Python_whitesmoke.svg");
 				background-repeat: no-repeat;
 				height: 120px;
 				width: 120px;
 			}
 			.icon.solid.R
 			{
-				background: url("/Homepage-DL.github.io/images/Icons/R_whitesmoke.svg");
+				background: url("./Icons/R_whitesmoke.svg");
 				background-size: 130px;
 				background-repeat: no-repeat;
 				height: 120px;
@@ -1952,7 +1952,7 @@ input, select, textarea {
 			.icon.solid.Science
 			{
 
-				background: url("/Homepage-DL.github.io/images/Icons/Science.svg");
+				background: url("./Icons/Science.svg");
 				background-size: 110px;
 				background-repeat: no-repeat;
 				height: 120px;
@@ -1963,7 +1963,7 @@ input, select, textarea {
 			.icon.solid.Analysis
 			{
 
-				background: url("/Homepage-DL.github.io/images/Icons/Analysis.svg");
+				background: url("./Icons/Analysis.svg");
 				background-size: 110px;
 				background-repeat: no-repeat;
 				height: 120px;
@@ -1973,7 +1973,7 @@ input, select, textarea {
 			.icon.solid.Teaching
 			{
 
-				background: url("/Homepage-DL.github.io/images/Icons/Teaching.svg");
+				background: url("./Icons/Teaching.svg");
 				background-size: 110px;
 				background-repeat: no-repeat;
 				height: 120px;
@@ -1983,7 +1983,7 @@ input, select, textarea {
 			.icon.solid.Visualization
 			{
 
-				background: url("/Homepage-DL.github.io/images/Icons/Visualization.svg");
+				background: url("./Icons/Visualization.svg");
 				background-size: 110px;
 				background-repeat: no-repeat;
 				height: 120px;
